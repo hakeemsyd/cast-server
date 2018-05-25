@@ -27,15 +27,6 @@ io.on('connection', function(sock){
   });
 });
 
-/*app.get('/*', function (req, res) {
-  console.log(req);
-  io.sockets.emit('req', {
-    reqheader : req.headers,
-    requrl : req.protocol + "://" + req.headers.host + req.url,
-    reqmethod : req.method
-  })
-});*/
-
 app.post('/rtc/connections', function(req, res) {
   console.log('Serving @' + req.path + ', type: ' + req.query.type );
   if (req.query.type == 'join') {
