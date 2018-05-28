@@ -29,7 +29,8 @@ io.on('connection', function(sock){
 
 app.post('/rtc/connections', function(req, res) {
   console.log('Serving @' + req.path + ', type: ' + req.query.type );
-  if (req.query.type == 'join') {
+  // type undefined is sent from peer where icecandidates are included with offer.
+  if (req.query.type == undefined || req.query.type == 'join') {
     // don't respond back yet we will long poll.
     response = res;
     io.sockets.emit('offer', {sdp: req.query.offer_sdp});
